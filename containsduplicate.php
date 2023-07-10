@@ -2,18 +2,20 @@
 
 class Duplicate
 {
-    public function cantains($nums)
+    public function containsDuplicate($nums)
     {
+        $map = [];
         for ($i = 0; $i < count($nums); $i++) {
-            for ($j = $i + 1; $j < count($nums); $j++) {
-                if ($nums[$i] == $nums[$j]) {
-                    return true;
-                }
+            if (isset($map[$nums[$i]])) {
+                return true;
+            } else {
+                $map[$nums[$i]] = 1;
             }
         }
+
         return false;
     }
 }
 
 $a = new Duplicate();
-echo $a->cantains([1, 2, 3]);
+echo $a->containsDuplicate([1, 2, 3]);
